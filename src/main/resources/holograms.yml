@@ -1,0 +1,10 @@
+enabled: true
+line-spacing: 0.25
+height-offset: 2.2
+lines:
+  - '&d&lVytalProtect'
+  - '&7Dueño: &f%owner%'
+  - '&7Miembros: &f%members%'
+  - '&7Radio: &f%radius%'
+  - '&7Estado: &aActivo'
+  
