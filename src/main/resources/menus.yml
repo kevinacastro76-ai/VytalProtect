@@ -1,0 +1,10 @@
+# El menú usa ranuras de inventario estándar. Los materiales se adaptarán al API base 1.8.
+main:
+  size: 27
+  filler: STAINED_GLASS_PANE
+  members-slot: 10
+  permissions-slot: 12
+  bans-slot: 14
+  stats-slot: 16
+  close-slot: 22
+  
