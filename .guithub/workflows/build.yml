@@ -1,3 +1,4 @@
+
 name: Build VytalProtect
 
 on:
@@ -12,38 +13,29 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Detect Maven project folder
-        id: project
-        shell: bash
-        run: |
-          if [ -f pom.xml ]; then
-            echo "dir=." >> "$GITHUB_OUTPUT"
-          elif [ -f VytalProtect/pom.xml ]; then
-            echo "dir=VytalProtect" >> "$GITHUB_OUTPUT"
-          else
-            echo "No pom.xml found in repository root or VytalProtect/" >&2
-            exit 1
-          fi
-
-      - name: Set up Java 8
+      - name: Set up Java 17
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: "8"
-          cache: maven
+          java-version: "17"
 
-      - name: Build with Maven
-        working-directory: ${{ steps.project.outputs.dir }}
-        run: mvn --batch-mode --no-transfer-progress clean package
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: "8.7"
+
+      - name: Build with Gradle
+        run: gradle build
 
       - name: Upload plugin JAR
         uses: actions/upload-artifact@v4
         with:
           name: VytalProtect-JAR
-          path: ${{ steps.project.outputs.dir }}/target/VytalProtect.jar
+          path: build/libs/*.jar
           if-no-files-found: error
           retention-days: 14
