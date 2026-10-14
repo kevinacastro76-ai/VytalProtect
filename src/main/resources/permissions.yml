@@ -1,0 +1,18 @@
+# Permisos por rango dentro de cada protección.
+roles:
+  OWNER:
+    priority: 100
+    permissions: ['BUILD', 'CONTAINERS', 'INTERACT', 'PVP', 'MANAGE_MEMBERS', 'MANAGE_PERMISSIONS', 'BAN_PLAYERS', 'REMOVE_PROTECTION']
+  ADMIN:
+    priority: 70
+    permissions: ['BUILD', 'CONTAINERS', 'INTERACT', 'MANAGE_MEMBERS']
+  MODERATOR:
+    priority: 40
+    permissions: ['BUILD', 'CONTAINERS', 'INTERACT']
+  MEMBER:
+    priority: 20
+    permissions: ['BUILD', 'CONTAINERS', 'INTERACT']
+  VISITOR:
+    priority: 0
+    permissions: []
+default-role: MEMBER
