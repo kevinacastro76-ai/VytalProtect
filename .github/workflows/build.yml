@@ -12,16 +12,16 @@ jobs:
       - name: Descargar código
         uses: actions/checkout@v4
 
-      - name: Java 21
+      - name: Java 8
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '8'
           distribution: 'temurin'
 
       - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          gradle-version: '9.1.0'
+          gradle-version: '8.7'
 
       - name: Compilar
         run: gradle build
