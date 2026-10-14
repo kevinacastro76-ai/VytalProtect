@@ -1,0 +1,17 @@
+language: es_ES
+roles:
+  OWNER: '&dPropietario'
+  ADMIN: '&cAdministrador'
+  MODERATOR: '&6Moderador'
+  MEMBER: '&aMiembro'
+  VISITOR: '&7Visitante'
+permissions:
+  BUILD: 'Construir y romper bloques'
+  CONTAINERS: 'Abrir cofres y contenedores'
+  INTERACT: 'Usar puertas, botones y palancas'
+  PVP: 'Combatir dentro de la protección'
+  MANAGE_MEMBERS: 'Administrar miembros'
+  MANAGE_PERMISSIONS: 'Modificar permisos'
+  BAN_PLAYERS: 'Bloquear jugadores'
+  REMOVE_PROTECTION: 'Eliminar la protección'
+  
