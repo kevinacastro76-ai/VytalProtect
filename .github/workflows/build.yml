@@ -1,11 +1,11 @@
 name: Build VytalProtect
 
 on:
-push:
-branches: [ "" ]
-pull_request:
-branches: [ "" ]
 workflow_dispatch:
+push:
+branches: [""]
+pull_request:
+branches: [""]
 
 permissions:
 contents: read
@@ -16,31 +16,24 @@ name: Compile VytalProtect
 runs-on: ubuntu-latest
 
 steps:
-  - name: Checkout repository
+  - name: Descargar código
     uses: actions/checkout@v4
 
-  - name: Set up JDK 8
+  - name: Configurar Java 21
     uses: actions/setup-java@v4
     with:
+      java-version: "21"
       distribution: temurin
-      java-version: "8"
 
-  - name: Set up Gradle
+  - name: Configurar Gradle
     uses: gradle/actions/setup-gradle@v4
+    with:
+      gradle-version: "9.1.0"
 
-  - name: Validate Gradle wrapper
-    id: wrapper
-    run: |
-      if [ ! -f "./gradlew" ]; then
-        echo "Gradle wrapper not found. Generate and commit gradlew and gradle/wrapper files."
-        exit 1
-      fi
-      chmod +x ./gradlew
+  - name: Compilar VytalProtect
+    run: gradle clean build
 
-  - name: Build plugin
-    run: ./gradlew clean build
-
-  - name: Upload plugin JAR
+  - name: Guardar JAR
     uses: actions/upload-artifact@v4
     with:
       name: VytalProtect
