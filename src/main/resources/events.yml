@@ -1,5 +1,0 @@
-# Mensajes de entrada/salida; se pueden dejar vacíos para desactivarlos.
-enter: '&aHas entrado en la protección de &f%owner%&a.'
-leave: '&7Has salido de la protección de &f%owner%&7.'
-show-enter-message: true
-show-leave-message: true
