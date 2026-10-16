@@ -1,32 +1,20 @@
-plugins {
-    java
-}
+plugins { java }
 
-group = "lat.vytal"
+group = "lat.vytalprotect"
 version = "1.0.0"
 
-repositories {
-    mavenCentral()
-    maven("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-    maven("https://repo.papermc.io/repository/maven-public/")
-}
+repositories { mavenCentral(); maven("https://repo.papermc.io/repository/maven-public/") }
 
-dependencies {
-    compileOnly("org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT")
-}
+dependencies { compileOnly("org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT") }
 
 java {
-    toolchain {
-        languageVersion.set(JavaLanguageVersion.of(21))
-    }
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
 }
 
+// JDK 21 compiler, Java 8 bytecode/API surface for legacy server support.
 tasks.withType<JavaCompile>().configureEach {
-    // Build with Java 21 while keeping Java 8 bytecode/API compatibility for older 1.16 servers.
-    options.encoding = "UTF-8"
     options.release.set(8)
+    options.encoding = "UTF-8"
 }
 
-tasks.jar {
-    archiveBaseName.set("VytalProtect")
-}
+ tasks.processResources { filteringCharset = "UTF-8"; filesMatching("plugin.yml") { expand("version" to project.version) } }
